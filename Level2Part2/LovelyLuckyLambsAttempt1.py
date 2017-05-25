@@ -1,4 +1,4 @@
-# import math
+import math
 def answer(total_lambs):
     # stringent case
     maxNumber=0
@@ -20,17 +20,22 @@ def answer(total_lambs):
         # print('minNumber:'+str(maxNumber))
         # above we will get stringent case 
         minNumber=0
-        S=0
-        t=1
-        while True:
-            S=t+S
-            if S>total_lambs:
-                break
-            else:
-                minNumber+=1
-                t=2*t
+        # S=0
+        # t=1
+        # while True:
+        #     S=t+S
+        #     if S>total_lambs:
+        #         break
+        #     else:
+        #         minNumber+=1
+        #         t=2*t
     # print('maxNumber:'+str(minNumber))
     # minNumber=int(math.log(total_lambs+1,2))
+        if total_lambs % 2 !=0:
+            minNumber = int(round(math.log((total_lambs + 1), 2)))
+        else:
+            minNumber = int(math.log((total_lambs + 1), 2))
+        # print('minNumber: '+str(minNumber))
     return maxNumber-minNumber
 
 print('enter total_lambs')
