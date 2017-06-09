@@ -176,6 +176,7 @@ class BunnyEscape:
                 row=node[0]
                 col=node[1]
                 self.trackPath(row, col)
+                
             if self.weights[(len(self.maze)-1, len(self.maze[0])-1)] == len(self.maze)+len(self.maze[0])-1:
                 weight=len(self.maze)+len(self.maze[0])-1
                 break
