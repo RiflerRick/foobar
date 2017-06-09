@@ -1,0 +1,26 @@
+33
+         11388 function calls in 0.035 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        2    0.000    0.000    0.000    0.000 cp1252.py:18(encode)
+        1    0.000    0.000    0.001    0.001 solution4.py:10(__init__)
+       23    0.003    0.000    0.003    0.000 solution4.py:248(initializeWeights)
+        1    0.005    0.005    0.034    0.034 solution4.py:259(printPath)
+      148    0.000    0.000    0.000    0.000 solution4.py:28(isRemovable)
+        1    0.000    0.000    0.035    0.035 solution4.py:3(<module>)
+        1    0.000    0.000    0.034    0.034 solution4.py:4(answer)
+     3311    0.023    0.000    0.024    0.000 solution4.py:79(trackPath)
+        1    0.000    0.000    0.000    0.000 solution4.py:8(BunnyEscape)
+        2    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_encode}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.__build_class__}
+        1    0.000    0.000    0.035    0.035 {built-in method builtins.exec}
+      534    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+      147    0.000    0.000    0.000    0.000 {built-in method builtins.sum}
+     3901    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+     3311    0.002    0.000    0.002    0.000 {method 'pop' of 'list' objects}
+
+

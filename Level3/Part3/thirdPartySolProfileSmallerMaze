@@ -1,0 +1,30 @@
+removable walls: [(6, 1), (7, 1), (7, 3), (7, 13), (8, 1), (10, 0), (10, 1), (10, 2), (10, 13)]
+26
+         4611 function calls in 0.004 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        4    0.000    0.000    0.000    0.000 cp1252.py:18(encode)
+        1    0.000    0.000    0.004    0.004 thirdPartySol.py:1(<module>)
+        1    0.000    0.000    0.004    0.004 thirdPartySol.py:1(answer)
+      134    0.000    0.000    0.000    0.000 thirdPartySol.py:108(is_removable)
+      603    0.001    0.000    0.001    0.000 thirdPartySol.py:120(get_adj_items)
+       10    0.001    0.000    0.002    0.000 thirdPartySol.py:173(bfs)
+        1    0.000    0.000    0.000    0.000 thirdPartySol.py:18(<listcomp>)
+        1    0.000    0.000    0.000    0.000 thirdPartySol.py:20(<listcomp>)
+        9    0.000    0.000    0.000    0.000 thirdPartySol.py:25(<listcomp>)
+        9    0.000    0.000    0.000    0.000 thirdPartySol.py:28(<listcomp>)
+       10    0.001    0.000    0.001    0.000 thirdPartySol.py:45(make_graph)
+        1    0.000    0.000    0.000    0.000 thirdPartySol.py:80(get_removeable_walls)
+        4    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_encode}
+        1    0.000    0.000    0.004    0.004 {built-in method builtins.exec}
+       12    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+      332    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+     2463    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+      342    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+      670    0.000    0.000    0.000    0.000 {method 'pop' of 'list' objects}
+
+

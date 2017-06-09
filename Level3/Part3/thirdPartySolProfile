@@ -1,0 +1,30 @@
+removable walls: [(6, 1), (7, 1), (7, 3), (7, 13), (8, 1), (10, 0), (10, 1), (10, 2), (10, 13), (12, 1), (12, 2), (12, 3), (12, 4), (12, 5), (12, 6), (12, 7), (12, 8), (12, 9), (12, 10), (12, 11), (12, 12), (12, 13), (12, 14)]
+33
+         45370 function calls in 0.034 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        4    0.000    0.000    0.000    0.000 cp1252.py:18(encode)
+        1    0.000    0.000    0.034    0.034 thirdPartySol.py:1(<module>)
+        1    0.000    0.000    0.034    0.034 thirdPartySol.py:1(answer)
+      148    0.000    0.000    0.000    0.000 thirdPartySol.py:108(is_removable)
+     3459    0.004    0.000    0.004    0.000 thirdPartySol.py:120(get_adj_items)
+       24    0.016    0.001    0.021    0.001 thirdPartySol.py:173(bfs)
+        1    0.000    0.000    0.000    0.000 thirdPartySol.py:18(<listcomp>)
+        1    0.000    0.000    0.000    0.000 thirdPartySol.py:20(<listcomp>)
+       23    0.000    0.000    0.000    0.000 thirdPartySol.py:25(<listcomp>)
+       23    0.000    0.000    0.000    0.000 thirdPartySol.py:28(<listcomp>)
+       24    0.007    0.000    0.012    0.000 thirdPartySol.py:45(make_graph)
+        1    0.000    0.000    0.000    0.000 thirdPartySol.py:80(get_removeable_walls)
+        4    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_encode}
+        1    0.000    0.000    0.034    0.034 {built-in method builtins.exec}
+       26    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+     2895    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+    27507    0.003    0.000    0.003    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+     2919    0.001    0.000    0.001    0.000 {method 'get' of 'dict' objects}
+     8305    0.002    0.000    0.002    0.000 {method 'pop' of 'list' objects}
+
+

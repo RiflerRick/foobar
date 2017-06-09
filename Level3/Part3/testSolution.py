@@ -248,12 +248,9 @@ class BunnyEscape:
     def initializeWeights(self):
         for i in range(len(self.maze)):
             for j in range(len(self.maze[0])):
-                # if self.maze[i][j]==1:
-                    
-                    # check if the wall is removable: a wall is removable if it has at least 2 adjacent zeros.
-                    # if self.isRemovable((i,j)):
-                    #     self.removableWalls.append((i,j))
+               
                 self.weights[(i,j)]=1000000 # this is just assignment of weights
+
         self.weights[(0,0)]=1        
 
     def printPath(self):
@@ -266,18 +263,7 @@ class BunnyEscape:
             self.trackPath(row, col)
         
         weight=self.weights[(len(self.maze)-1, len(self.maze[0])-1)]
-        # print ('weight after first iteration: '+str(weight))
-
-        # print('printing all weights: ----')
-        # for i in range(len(self.maze)):
-        #     for j in range(len(self.maze[0])):
-        #         print(str(self.weights[(i,j)]) + '\t',end='')
-        #     print()
-
-        # print('removable walls: '+str(self.removableWalls))
-
-
-
+       
         for i in self.removableWalls:
             # print ('i, j now: '+str(i))
             self.maze[i[0]][i[1]]=0
@@ -285,15 +271,7 @@ class BunnyEscape:
             self.initializeWeights()
 
             self.queue.append((0,0))
-            
-            # print('removable wall: '+str(i))
-            # if i==(10,0):
-            #     print('current maze ')
-            #     for a in self.maze:
-            #         for b in a:
-            #             print(str(b)+' ', end='')
-            #         print()
-
+           
             while self.queue != []:
                 # print ('queue now: '+str(self.queue))
                 node=self.queue.pop(0)
@@ -301,63 +279,15 @@ class BunnyEscape:
                 col=node[1]
                 self.trackPath(row, col)    
 
-            # if i==(10,0): # DEBUG
-            #     print('printing all weights: ----')
-            #     for p in range(len(self.maze)):
-            #         for q in range(len(self.maze[0])):
-            #             print(str(self.weights[(p,q)]) + '\t',end='')
-            #         print()
-
-            # if self.weights[(len(self.maze)-1, len(self.maze[0])-1)] == len(self.maze)+len(self.maze[0])-1:
-            #     weight=len(self.maze)+len(self.maze[0])-1
-            #     break
-            # print('weight in iteration: '+str(self.weights[(len(self.maze)-1, len(self.maze[0])-1)]))
             if self.weights[(len(self.maze)-1, len(self.maze[0])-1)] < weight:
                 weight=self.weights[(len(self.maze)-1, len(self.maze[0])-1)]
             self.maze[i[0]][i[1]]=1
 
         print (weight)
 
-# answer([[0, 1, 1, 0], [0, 0, 0, 1], [1, 1, 0, 0], [1, 1, 1, 0]])
-answer([[0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0], [0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0]])
-
-# maze2 = [[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-#         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-#         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-#         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-#         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-#         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-#         [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-#         [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-#         [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-#         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-
-# maze1 = [[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-#         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-#         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-#         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-#         [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-#         [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-#         [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-#         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-
+# answer([[0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0], [0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0]])
 # maze = [[0, 1, 1, 0],
-#         [0, 0, 0, 1],
-#         [1, 1, 0, 0],
-#         [1, 1, 1, 0]]
+#         [0, 0, 1, 0],
+#         [1, 0, 1, 0]]
 
 # answer(maze)

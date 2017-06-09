@@ -166,6 +166,8 @@ class BunnyEscape:
         #         print(str(self.weights[(i,j)]) + '\t',end='')
         #     print()
 
+        print('walls: '+str(self.walls))
+
         for i in self.walls:
             # print ('i, j now: '+str(i))
             self.maze[i[0]][i[1]]=0
