@@ -34,7 +34,7 @@ def traverse(depth, row, times, time_limit, bunnies):
                     bunnies.append(a-1)
             depth+=1
             time_limit-=times[row][a]
-            
+            print('row now: {}'.format(row))
             traverse(depth, a, times, time_limit, bunnies)
             # backtracking code comes here
             if depth==1:
@@ -48,12 +48,13 @@ def traverse(depth, row, times, time_limit, bunnies):
                 print('time_limit now: {}, depth now: {} and bunnies: {}'.format(time_limit, depth, bunnies))
                 if bunnies!=[]:
                     bunnies.pop(0)
+                
 
             else:
                 if row==len(times)-1:
                     if len(bunnies)>len(bunniesSaved):
                         bunniesSaved=bunnies[:]
-                return
+                continue
             
 def stopProcess(bunnies):
     print(bunnies)
