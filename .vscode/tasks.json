@@ -1,0 +1,14 @@
+{
+    "version": "0.1.0",
+    "command": "javac",
+    "isShellCommand": true,
+    "showOutput": "always",
+    "isBackground": true,
+    "suppressTaskName": true,
+    "tasks": [
+        {
+            "taskName": "build",
+            "args": ["-g", "${file}"]
+        }
+    ]
+}

@@ -39,11 +39,12 @@ Inputs:
 Output:
     (int list) [1, 2]
 */
-package com.google.challenges; 
+// package com.google.challenges; 
 import java.util.*;
+import java.io.*;
 
 class subsetComparator implements Comparator<LinkedList<Integer>> {
-    @Override
+    // @Override
     public int compare(LinkedList<Integer> a, LinkedList<Integer> b) {
 
     	if (a.size() != b.size())
@@ -95,7 +96,7 @@ public class Answer {
 
 
 	public static LinkedList<LinkedList<Integer>> subsets(int bunnies) {
-
+		//bunnies here is the number of bunnies.
 		LinkedList<LinkedList<Integer>> subsets = new LinkedList<LinkedList<Integer>>();
 
 		int max = (int)Math.pow(2,bunnies) - 1;
@@ -229,4 +230,12 @@ public class Answer {
 
 		return result;
     } 
+	public static void main(String args[])throws IOException
+	{
+		int times[][] =new int [][]{{0, 2, 2, 2, -1}, {9, 0, 2, 2, -1}, {9, 3, 0, 2, -1}, {9, 3, 2, 0, -1}, {9, 3, 2, 2, 0}};
+		int time_limit=1;
+		Answer obj=new Answer();
+		obj.answer(times, time_limit);
+
+	}
 }
