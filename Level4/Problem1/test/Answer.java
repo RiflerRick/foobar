@@ -39,12 +39,12 @@ Inputs:
 Output:
     (int list) [1, 2]
 */
-// package com.google.challenges; 
+package com.google.challenges; 
 import java.util.*;
 import java.io.*;
 
 class subsetComparator implements Comparator<LinkedList<Integer>> {
-    @Override
+    // @Override
     public int compare(LinkedList<Integer> a, LinkedList<Integer> b) {
 
     	if (a.size() != b.size())
@@ -127,7 +127,7 @@ public class Answer {
 		}
 
 		Collections.sort(subsets, new subsetComparator());
-		System.out.println(subsets);
+// 		System.out.println(subsets);
 		return subsets;
 
 	}
@@ -158,15 +158,15 @@ public class Answer {
 						//Integer.MAX_VALUE is the maximum value that an integer can have which is typically 231-1.
         			min[src][src] = 0;
     		    }
-				System.out.println("currently z="+Integer.toString(z)+": and src =" + Integer.toString(src));
-				for(int a=0;a<len;a++)
-				{
-					for(int b=0;b<len;b++)
-					{
-						System.out.print(Integer.toString(min[a][b])+",");
-					}
-					System.out.println();
-				}
+				// System.out.println("currently z="+Integer.toString(z)+": and src =" + Integer.toString(src));
+				// for(int a=0;a<len;a++)
+				// {
+				// 	for(int b=0;b<len;b++)
+				// 	{
+				// 		System.out.print(Integer.toString(min[a][b])+",");
+				// 	}
+				// 	System.out.println();
+				// }
 
     			for (int i=0; i<len; ++i)
     	            for (int j=0; j<len; ++j)
@@ -178,26 +178,26 @@ public class Answer {
 				Here what we are doing is very clever to say the least. Its an interesting step. What we are actually doing here is that we are taking the first node in the first row initially, then we are checking the distance of that node with any node in the whole graph adding that distance and checking whether that distance is more than the distance stored for going from that other node (i,j) to src,j.			
 				*/
     	    }
-			System.out.println("-------------------------------------------");
-			for (int a=0;a< len;a++)
-			{
-				for(int b=0;b<len;b++)
-				{
-					System.out.print(Integer.toString(min[a][b])+',');
-				}
-				System.out.println();
-			}
+// 			System.out.println("-------------------------------------------");
+// 			for (int a=0;a< len;a++)
+// 			{
+// 				for(int b=0;b<len;b++)
+// 				{
+// 					System.out.print(Integer.toString(min[a][b])+',');
+// 				}
+// 				System.out.println();
+// 			}
 	    }
-		System.out.println("-------------------------------------------");
-		System.out.println("-------------------------------------------");
-	   for (int i=0;i< len;i++)
-	   {
-		   for(int j=0;j<len;j++)
-		   {
-			   System.out.print(Integer.toString(min[i][j])+',');
-		   }
-		   System.out.println();
-	   }
+// 		System.out.println("-------------------------------------------");
+// 		System.out.println("-------------------------------------------");
+// 	   for (int i=0;i< len;i++)
+// 	   {
+// 		   for(int j=0;j<len;j++)
+// 		   {
+// 			   System.out.print(Integer.toString(min[i][j])+',');
+// 		   }
+// 		   System.out.println();
+// 	   }
 	   
 		for (src = 0; src < len; src++)
 		{
@@ -210,7 +210,7 @@ public class Answer {
 	                    
 	                    for (int c = 0 ; c < len-2 ; c++)
 	                        cycle[c] = c;
-						System.out.println("cycle found");
+				// 		System.out.println("cycle found");
 	                    return cycle;
 	                }
 	            }
@@ -227,8 +227,8 @@ public class Answer {
 			permute(subsets, 0, index);
 			
 			//Collections.sort(permutations, new subsetComparator());
-			System.out.println("permutations");
-			System.out.println(permutations);
+// 			System.out.println("permutations");
+// 			System.out.println(permutations);
 			
 			for (int p = 0 ; p < permutations.size(); p++ ) {
 			    
@@ -236,7 +236,7 @@ public class Answer {
 				time = time_limit;
 
 				LinkedList<Integer> perm = permutations.get(p);
-				System.out.println("perm now:" + perm);
+				// System.out.println("perm now:" + perm);
 				// for (int i=0;i<perm.size();i++)
 				// {
 				// 	System.out.print(perm.get(i)+",");
@@ -259,14 +259,8 @@ public class Answer {
 				    
 				    set.clear();
 			        permutations.clear();
-					int[] result1 = new int[0];
-					System.out.println("result 1 now: ");
-					// System.out.println(result1);
-					for(int i=0;i<result1.length;i++)
-					{
-						System.out.println(result1[i]);
-					}
-				    return result;	
+			    
+				    return result;
 				}
 
 			}
@@ -280,18 +274,19 @@ public class Answer {
 
 		return result;
     } 
-	public static void main(String args[])throws IOException
-	{
-		// int times[][] =new int [][]{{0, 2, 2, 2, -1}, {9, 0, 2, 2, -1}, {9, 3, 0, 2, -1}, {9, 3, 2, 0, -1}, {9, 3, 2, 2, 0}};
-		int times[][]=new int[][]{{0,1,1,1,1},{1,0,1,1,1},{1,1,0,1,1},{1,1,1,0,1},{1,1,1,1,0}};
-		int time_limit=3;
-		// int time_limit=1;
-		// Answer obj=new Answer();
-		// System.out.println(obj.answer(times, time_limit));
-		int[] a=answer(times, time_limit);
-		for (int i=0;i<a.length;i++){
-			System.out.println(a[i]+",");
-		}
+// 	public static void main(String args[])throws IOException
+// 	{
+// 		// int times[][] =new int [][]{{0, 2, 2, 2, -1}, {9, 0, 2, 2, -1}, {9, 3, 0, 2, -1}, {9, 3, 2, 0, -1}, {9, 3, 2, 2, 0}};
+// 		int times[][]=new int[][]{{0,1,1,1,1},{1,0,1,1,1},{1,1,0,1,1},{1,1,1,0,1},{1,1,1,1,0}};
+// 		int time_limit=3;
+// 		// int time_limit=1;
+// 		// Answer obj=new Answer();
+// 		// System.out.println(obj.answer(times, time_limit));
+// 		int[] a=answer(times, time_limit);
+// 		for (int i=0;i<a.length;i++){
+// 			System.out.println(a[i]+",");
+// 		}
 
-	}
+// 	}
+
 }

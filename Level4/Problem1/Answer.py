@@ -45,7 +45,7 @@ def getSelections(numberOfBunnies):
                 a=['0']+a
         numbers.append(a)
     # now we have got all the numbers
-    print('numbers: {}'.format(numbers))
+    # print('numbers: {}'.format(numbers))
     selections=[]
     s=[]
     for i in numbers:
@@ -55,7 +55,7 @@ def getSelections(numberOfBunnies):
                 s.append(j)
         
         selections.append(s)
-    print('selections now: {}'.format(selections))
+    # print('selections now: {}'.format(selections))
     # [[0, 1, 2], [0, 1], [0, 2], [1, 2], [0], [1], [2], []]
     selections=sorted(selections, key=functools.cmp_to_key((comp)))
     # selections.reverse()
@@ -73,7 +73,7 @@ def getSelections(numberOfBunnies):
     #     selections[i]=selections[pos][:]
     #     selections[pos]=temp[:]
     
-    print(selections)
+    # print(selections)
     return selections
     
 def permute(a, l, r):
@@ -97,7 +97,7 @@ def answer(times, time_limit):
             minMatrix[x].append(0)
 
 
-    print(minMatrix)
+    # print(minMatrix)
 
     for i in range(len(times)):
         for src in range(len(times)):
@@ -111,21 +111,49 @@ def answer(times, time_limit):
                     if minMatrix[src][a]!=MAXVALUE and minMatrix[src][a] + times[a][b] < minMatrix[src][b]:
                         minMatrix[src][b] = minMatrix[src][a] + times[a][b]
 
-    print('minMatrix: {}'.format(minMatrix))
+    # print('minMatrix: {}'.format(minMatrix))
     # 0,2,1,1,-1,
     # 8,0,1,1,-1,
     # 8,2,0,1,-1,
     # 8,2,1,0,-1,
     # 9,3,2,2,0,
 
+    for src in range(len(times)):
+        for i in range(len(times)):
+            for j in range(len(times)):
+                if minMatrix[src][i] + times[i][j] < minMatrix[src][j]:
+                    result=[]
+                    for p in range(len(times)-2):
+                        result.append(p)
+                    return result
 
     selections=getSelections(len(times)-2)
-    print('permutations')
+    # print('permutations')
+
     for i in range(len(selections)):
-        permute(selections[i], 0, len(selections[i])-1)
+        permute(selections[i][:], 0, len(selections[i])-1)
         # print(permutations)
         
+
+        for perm in permutations:
+            fromPosition = 0
+            time = time_limit
+            # print('perm now: {}'.format(perm))
+            for val in perm:
+                time -= minMatrix[fromPosition][val + 1]
+                fromPosition = val + 1
+
+            time -= minMatrix[fromPosition][len(times)-1]
+            if time>=0:
+                print('selection now: {}'.format(selections[i]))
+                del permutations[:]
+                return selections[i]
+
+            
+
         del permutations[:]
+
+    return [] # if nothing can be saved
         # print('---------------------')
 
         
@@ -138,8 +166,10 @@ def answer(times, time_limit):
 
 
     
-getSelections(3)
+# getSelections(3)
 answer( [[0, 2, 2, 2, -1], [9, 0, 2, 2, -1], [9, 3, 0, 2, -1], [9, 3, 2, 0, -1], [9, 3, 2, 2, 0]], 1)
+
+answer( [[0, 1, 1, 1, 1], [1, 0, 1, 1, 1], [1, 1, 0, 1, 1], [1, 1, 1, 0, 1], [1, 1, 1, 1, 0]], 3)
 
     
 
