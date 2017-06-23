@@ -44,7 +44,7 @@ import java.util.*;
 import java.io.*;
 
 class subsetComparator implements Comparator<LinkedList<Integer>> {
-    // @Override
+    @Override
     public int compare(LinkedList<Integer> a, LinkedList<Integer> b) {
 
     	if (a.size() != b.size())
@@ -100,6 +100,7 @@ public class Answer {
 		LinkedList<LinkedList<Integer>> subsets = new LinkedList<LinkedList<Integer>>();
 
 		int max = (int)Math.pow(2,bunnies) - 1;
+		//for a value of bunnies=3, like in the first test case the value of max is going to be 7 which is the highest number we can go in binary in 3 digits.
 
 		int maxLen = Integer.toBinaryString(max).length();
 
@@ -126,7 +127,7 @@ public class Answer {
 		}
 
 		Collections.sort(subsets, new subsetComparator());
-
+		System.out.println(subsets);
 		return subsets;
 
 	}
@@ -138,7 +139,11 @@ public class Answer {
 		int len = times.length;
 
 		LinkedList<LinkedList<Integer>> subsets = subsets(len-2);
-		
+		/*
+		A rather intriguing thing happens in the previous line. What is done is that we try and get all possible subsets of a the set [0,1,2] where 0 is the first bunny, 1 is the second bunny and 2 is the third bunny. The way we get all the subsets for the set [0,1,2] is the following:
+		Its like the total number of ways we can select 3 bunnies.
+		Now observe that in binary numbers for each numbers until we reach the number 2*n-1 where n is the number of values among which we are selecting, we ultimately end up getting all the possible subsets. Its a rather clever way of getting all possible subsets of a number. 
+		*/
 		int[][] min = new int[len][len];
 		
 		int src = 0;
@@ -150,16 +155,49 @@ public class Answer {
     		    if (z==0) {
         			for (int i=0; i<len; ++i)
         				min[src][i] = Integer.MAX_VALUE;
+						//Integer.MAX_VALUE is the maximum value that an integer can have which is typically 231-1.
         			min[src][src] = 0;
     		    }
-    
+				System.out.println("currently z="+Integer.toString(z)+": and src =" + Integer.toString(src));
+				for(int a=0;a<len;a++)
+				{
+					for(int b=0;b<len;b++)
+					{
+						System.out.print(Integer.toString(min[a][b])+",");
+					}
+					System.out.println();
+				}
+
     			for (int i=0; i<len; ++i)
     	            for (int j=0; j<len; ++j)
     	                if (min[src][i] != Integer.MAX_VALUE && min[src][i] + times[i][j] < min[src][j])
     	                    min[src][j] = min[src][i] + times[i][j];
+				/*
+				Here basically a relaxation step goes on. Recall that in graph theory in case of the bellman ford algorithm or the djikstra algorithm, a relaxation step is followed. The step goes in the following way: if we have a node X that is connected to a node Y which in turn is connected to a node Z and if node X is also connected directly to node Z then the relaxation step says that if w(X,Z)<w(X,Y)+w(Y,Z) then w(X,Z)=w(X,Y)+w(Y,Z). This is a fundamental step in the process of finding the shortest path from one node (source) to all other nodes. It is also called single source shortest path algorithm. 
+
+				Here what we are doing is very clever to say the least. Its an interesting step. What we are actually doing here is that we are taking the first node in the first row initially, then we are checking the distance of that node with any node in the whole graph adding that distance and checking whether that distance is more than the distance stored for going from that other node (i,j) to src,j.			
+				*/
     	    }
+			System.out.println("-------------------------------------------");
+			for (int a=0;a< len;a++)
+			{
+				for(int b=0;b<len;b++)
+				{
+					System.out.print(Integer.toString(min[a][b])+',');
+				}
+				System.out.println();
+			}
 	    }
-	   
+		System.out.println("-------------------------------------------");
+		System.out.println("-------------------------------------------");
+	   for (int i=0;i< len;i++)
+	   {
+		   for(int j=0;j<len;j++)
+		   {
+			   System.out.print(Integer.toString(min[i][j])+',');
+		   }
+		   System.out.println();
+	   }
 	   
 		for (src = 0; src < len; src++)
 		{
@@ -189,7 +227,9 @@ public class Answer {
 			permute(subsets, 0, index);
 			
 			//Collections.sort(permutations, new subsetComparator());
-
+			System.out.println("permutations");
+			System.out.println(permutations);
+			
 			for (int p = 0 ; p < permutations.size(); p++ ) {
 			    
 				from = 0;
@@ -233,9 +273,15 @@ public class Answer {
 	public static void main(String args[])throws IOException
 	{
 		int times[][] =new int [][]{{0, 2, 2, 2, -1}, {9, 0, 2, 2, -1}, {9, 3, 0, 2, -1}, {9, 3, 2, 0, -1}, {9, 3, 2, 2, 0}};
+		// int times[][]=new int[][]{{0,1,1,1,1},{1,0,1,1,1},{1,1,0,1,1},{1,1,1,0,1},{1,1,1,1,0}};
+		// int time_limit=3;
 		int time_limit=1;
-		Answer obj=new Answer();
-		obj.answer(times, time_limit);
+		// Answer obj=new Answer();
+		// System.out.println(obj.answer(times, time_limit));
+		int[] a=answer(times, time_limit);
+		for (int i=0;i<a.length;i++){
+			System.out.println(a[i]+',');
+		}
 
 	}
 }
